@@ -1,0 +1,5 @@
+﻿using System.Windows;
+
+namespace DryIocDI {
+    public partial class App : Application { }
+}

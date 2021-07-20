@@ -1,0 +1,10 @@
+﻿<Application x:Class="SimpleInjectorDI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SimpleInjectorDI"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <local:ServiceLocator x:Key="ServiceLocator"/>
+    </Application.Resources>
+</Application>
