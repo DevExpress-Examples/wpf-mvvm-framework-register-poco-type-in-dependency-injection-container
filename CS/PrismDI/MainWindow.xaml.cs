@@ -9,9 +9,9 @@ namespace PrismDI {
     }
 
     [POCOViewModel]
-    public class MainViewModel {
+    public class MainWindowViewModel {
         public virtual IDetailViewModel DetailViewModel { get; set; }
-        public MainViewModel(IDetailViewModel detailViewModel) => DetailViewModel = detailViewModel;
+        public MainWindowViewModel(IDetailViewModel detailViewModel) => DetailViewModel = detailViewModel;
     }
 
     public interface IDetailViewModel {
