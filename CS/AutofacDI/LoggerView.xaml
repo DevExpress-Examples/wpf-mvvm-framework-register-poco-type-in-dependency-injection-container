@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AutofacDI.LoggerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             DataContext="{Binding Path=LoggerViewModel, Source={StaticResource ServiceLocator}}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Margin="0,4" Grid.ColumnSpan="2" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Row="1" Width="120"
+                Content="Push Text"
+                Command="{Binding PushTextCommand}"/>
+        <Button Grid.Row="1" Grid.Column="1" Width="120"
+                Content="Push Signature"
+                Command="{Binding PushSignatureCommand}"/>
+    </Grid>
+</UserControl>
