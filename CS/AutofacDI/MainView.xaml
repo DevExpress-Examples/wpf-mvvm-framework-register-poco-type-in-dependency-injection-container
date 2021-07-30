@@ -1,4 +1,4 @@
-﻿<Window x:Class="AutofacDI.MainWindow"
+﻿<Window x:Class="AutofacDI.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:AutofacDI"
@@ -8,9 +8,13 @@
     <Grid Margin="4">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding Logs}"/>
-        <local:LoggerView Grid.Row="1"/>
+        <GroupBox Header="Main View">
+            <ListBox BorderThickness="0" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" DisplayMemberPath="DisplayText"/>
+        </GroupBox>
+        <GroupBox Header="Detail View" Grid.Row="1">
+            <local:DetailView DataContext="{Binding Detail}"/>
+        </GroupBox>
     </Grid>
 </Window>
