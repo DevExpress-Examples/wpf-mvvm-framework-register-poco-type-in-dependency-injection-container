@@ -2,16 +2,16 @@
 using DevExpress.Mvvm.Native;
 using System.Collections.ObjectModel;
 
-namespace AutofacDI {
+namespace Common {
     [POCOViewModel]
-    public class CollectionViewModel {
-        readonly IDataStorage<Person> storage;
+    public class CollectionViewModel<T> where T : class {
+        readonly IDataStorage<T> storage;
         readonly IDetailViewModel detail;
 
-        public virtual ObservableCollection<Person> Items { get; protected set; }
-        public virtual Person SelectedItem { get; set; }
+        public virtual ObservableCollection<T> Items { get; protected set; }
+        public virtual T SelectedItem { get; set; }
 
-        public CollectionViewModel(IDataStorage<Person> storage, IDetailViewModel detail) {
+        public CollectionViewModel(IDataStorage<T> storage, IDetailViewModel detail) {
             this.storage = storage;
             this.detail = detail;
             Items = storage.Read().ToObservableCollection();
@@ -21,10 +21,10 @@ namespace AutofacDI {
             if(SelectedItem == null)
                 return;
             detail.SetCurrentItem(
-                SelectedItem.Id,
+                storage.GetId(SelectedItem),
                 id => {
                     var item = storage.Find(id);
-                    var index = Items.IndexOf(x => x.Id == id);
+                    var index = Items.IndexOf(x => storage.GetId(x) == id);
                     Items[index] = item;
                     SelectedItem = item;
                 }

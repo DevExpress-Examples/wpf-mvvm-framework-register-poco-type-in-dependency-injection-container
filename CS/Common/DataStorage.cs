@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AutofacDI {
-    public interface IDataStorage<T> {
+namespace Common {
+    public interface IDataStorage<T> where T : class {
+        int GetId(T item);
         T Find(int id);
         IList<T> Read();
         void Update(T item);
@@ -24,10 +25,9 @@ namespace AutofacDI {
                 new Person() { Id = 9, FirstName = "Anthony", LastName = "Rounds" },
             };
 
+        int IDataStorage<Person>.GetId(Person item) => item.Id;
         Person IDataStorage<Person>.Find(int id) => Clone(FindCore(id));
-        IList<Person> IDataStorage<Person>.Read() =>
-            items.Select(x => Clone(x)).ToList();
-
+        IList<Person> IDataStorage<Person>.Read() => items.Select(x => Clone(x)).ToList();
         void IDataStorage<Person>.Update(Person item) {
             var storageItem = FindCore(item.Id);
             storageItem.FirstName = item.FirstName;
