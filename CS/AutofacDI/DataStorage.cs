@@ -24,17 +24,17 @@ namespace AutofacDI {
                 new Person() { Id = 9, FirstName = "Anthony", LastName = "Rounds" },
             };
 
-        Person IDataStorage<Person>.Find(int id) => FindCore(id);
+        Person IDataStorage<Person>.Find(int id) => Clone(FindCore(id));
         IList<Person> IDataStorage<Person>.Read() =>
-            items.Select(x => new Person { Id = x.Id, FirstName = x.FirstName, LastName = x.LastName }).ToList();
+            items.Select(x => Clone(x)).ToList();
+
         void IDataStorage<Person>.Update(Person item) {
             var storageItem = FindCore(item.Id);
-            if(storageItem == null)
-                return;
             storageItem.FirstName = item.FirstName;
             storageItem.LastName = item.LastName;
         }
 
-        Person FindCore(int id) => items.FirstOrDefault(x => x.Id == id);
+        static Person Clone(Person x) => new Person { Id = x.Id, FirstName = x.FirstName, LastName = x.LastName };
+        Person FindCore(int id) => items.First(x => x.Id == id);
     }
 }

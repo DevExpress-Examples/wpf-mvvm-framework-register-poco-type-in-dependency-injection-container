@@ -26,6 +26,7 @@ namespace AutofacDI {
                     var item = storage.Find(id);
                     var index = Items.IndexOf(x => x.Id == id);
                     Items[index] = item;
+                    SelectedItem = item;
                 }
             );
         }

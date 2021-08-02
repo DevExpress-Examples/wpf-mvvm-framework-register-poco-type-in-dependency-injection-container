@@ -20,7 +20,6 @@ namespace AutofacDI {
         public void Update() {
             storage.Update(Item);
             onItemUpdated(Item.Id);
-            Item = null;
         }
         public bool CanUpdate() => Item != null;
     }
