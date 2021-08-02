@@ -1,27 +1,26 @@
 ﻿using DevExpress.Mvvm.DataAnnotations;
+using System;
 
 namespace AutofacDI {
-    public interface IDetailViewModel<T> {
-        T Item { get; set; }
+    public interface IDetailViewModel {
+        void SetCurrentItem(int id, Action<int> onItemUpdated);
     }
-
     [POCOViewModel]
-    public class DetailViewModel : IDetailViewModel<Person> {
-        readonly ICollectionViewModel<Person> collectionViewModel;
+    public class DetailViewModel : IDetailViewModel {
+        readonly IDataStorage<Person> storage;
+        Action<int> onItemUpdated;
 
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
         public virtual Person Item { get; set; }
-        protected void OnItemChanged() => (FirstName, LastName) = (Item?.FirstName, Item?.LastName);
+        public DetailViewModel(IDataStorage<Person> storage) => this.storage = storage;
 
-        public DetailViewModel(ICollectionViewModel<Person> collectionViewModel) => this.collectionViewModel = collectionViewModel;
-
-        public void CreateItem() => collectionViewModel.CreateItem(new Person() { FirstName = FirstName, LastName = LastName });
-        public bool CanCreateItem() => Item == null;
-        public void RefreshItems() => collectionViewModel.RefreshItems();
-        public void UpdateItem() => collectionViewModel.UpdateItem(new Person() { FirstName = FirstName, LastName = LastName });
-        public bool CanUpdateItem() => Item != null;
-        public void DeleteItem() => collectionViewModel.DeleteItem();
-        public bool CanDeleteItem() => Item != null;
+        void IDetailViewModel.SetCurrentItem(int id, Action<int> onItemUpdated) {
+            Item = storage.Find(id);
+            this.onItemUpdated = Item != null ? onItemUpdated : null;
+        }
+        public void Update() {
+            storage.Update(Item);
+            onItemUpdated(Item.Id);
+        }
+        public bool CanUpdate() => Item != null;
     }
 }
