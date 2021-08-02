@@ -2,9 +2,6 @@
 using System;
 
 namespace Common {
-    public interface IDetailViewModel {
-        void SetCurrentItem(int id, Action<int> onItemUpdated);
-    }
     [POCOViewModel]
     public class DetailViewModel<T> : IDetailViewModel where T : class {
         readonly IDataStorage<T> storage;

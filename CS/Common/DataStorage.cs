@@ -2,28 +2,19 @@
 using System.Linq;
 
 namespace Common {
-    public interface IDataStorage<T> where T : class {
-        int GetId(T item);
-        T Find(int id);
-        IList<T> Read();
-        void Update(T item);
-    }
     public class PersonStorage : IDataStorage<Person> {
-        readonly IList<Person> items;
-
-        public PersonStorage() =>
-            items = new List<Person> {
-                new Person() { Id = 0, FirstName = "Bruce", LastName = "Cambell" },
-                new Person() { Id = 1, FirstName = "Cindy", LastName = "Haneline" },
-                new Person() { Id = 2, FirstName = "Andrea", LastName = "Deville" },
-                new Person() { Id = 3, FirstName = "Anita", LastName = "Ryan" },
-                new Person() { Id = 4, FirstName = "George", LastName = "Bunkelman" },
-                new Person() { Id = 5, FirstName = "Anita", LastName = "Cardle" },
-                new Person() { Id = 6, FirstName = "Andrew", LastName = "Carter" },
-                new Person() { Id = 7, FirstName = "Almas", LastName = "Basinger" },
-                new Person() { Id = 8, FirstName = "Carolyn", LastName = "Baker" },
-                new Person() { Id = 9, FirstName = "Anthony", LastName = "Rounds" },
-            };
+        readonly IList<Person> items = new List<Person> {
+            new Person() { Id = 0, FirstName = "Bruce", LastName = "Cambell" },
+            new Person() { Id = 1, FirstName = "Cindy", LastName = "Haneline" },
+            new Person() { Id = 2, FirstName = "Andrea", LastName = "Deville" },
+            new Person() { Id = 3, FirstName = "Anita", LastName = "Ryan" },
+            new Person() { Id = 4, FirstName = "George", LastName = "Bunkelman" },
+            new Person() { Id = 5, FirstName = "Anita", LastName = "Cardle" },
+            new Person() { Id = 6, FirstName = "Andrew", LastName = "Carter" },
+            new Person() { Id = 7, FirstName = "Almas", LastName = "Basinger" },
+            new Person() { Id = 8, FirstName = "Carolyn", LastName = "Baker" },
+            new Person() { Id = 9, FirstName = "Anthony", LastName = "Rounds" },
+        };
 
         int IDataStorage<Person>.GetId(Person item) => item.Id;
         Person IDataStorage<Person>.Find(int id) => Clone(FindCore(id));
