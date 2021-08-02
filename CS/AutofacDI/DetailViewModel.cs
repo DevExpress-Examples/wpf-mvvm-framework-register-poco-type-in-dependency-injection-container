@@ -15,11 +15,12 @@ namespace AutofacDI {
 
         void IDetailViewModel.SetCurrentItem(int id, Action<int> onItemUpdated) {
             Item = storage.Find(id);
-            this.onItemUpdated = Item != null ? onItemUpdated : null;
+            this.onItemUpdated = onItemUpdated;
         }
         public void Update() {
             storage.Update(Item);
             onItemUpdated(Item.Id);
+            Item = null;
         }
         public bool CanUpdate() => Item != null;
     }

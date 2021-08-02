@@ -17,14 +17,17 @@ namespace AutofacDI {
             Items = storage.Read().ToObservableCollection();
         }
 
-        protected void OnSelectedItemChanged() =>
+        protected void OnSelectedItemChanged() {
+            if(SelectedItem == null)
+                return;
             detail.SetCurrentItem(
-                SelectedItem?.Id ?? -1,
+                SelectedItem.Id,
                 id => {
                     var item = storage.Find(id);
                     var index = Items.IndexOf(x => x.Id == id);
                     Items[index] = item;
                 }
             );
+        }
     }
 }
