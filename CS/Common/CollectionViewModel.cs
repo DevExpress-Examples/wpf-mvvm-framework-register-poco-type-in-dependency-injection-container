@@ -1,9 +1,7 @@
-﻿using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.Native;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Common {
-    [POCOViewModel]
     public class CollectionViewModel<T> where T : class {
         readonly IDataStorage<T> storage;
         readonly IDetailViewModel detail;
@@ -14,7 +12,7 @@ namespace Common {
         public CollectionViewModel(IDataStorage<T> storage, IDetailViewModel detail) {
             this.storage = storage;
             this.detail = detail;
-            Items = storage.Read().ToObservableCollection();
+            Items = new ObservableCollection<T>(storage.Read());
         }
 
         protected void OnSelectedItemChanged() {
@@ -24,7 +22,8 @@ namespace Common {
                 storage.GetId(SelectedItem),
                 id => {
                     var item = storage.Find(id);
-                    var index = Items.IndexOf(x => storage.GetId(x) == id);
+                    var localItem = Items.First(x => storage.GetId(x) == id);
+                    var index = Items.IndexOf(localItem);
                     Items[index] = item;
                     SelectedItem = item;
                 }

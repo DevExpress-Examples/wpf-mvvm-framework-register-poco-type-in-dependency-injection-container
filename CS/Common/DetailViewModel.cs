@@ -1,8 +1,6 @@
-﻿using DevExpress.Mvvm.DataAnnotations;
-using System;
+﻿using System;
 
 namespace Common {
-    [POCOViewModel]
     public class DetailViewModel<T> : IDetailViewModel where T : class {
         readonly IDataStorage<T> storage;
         Action<int> onItemUpdated;

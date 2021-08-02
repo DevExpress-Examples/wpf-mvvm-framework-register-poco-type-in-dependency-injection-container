@@ -4,8 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DevExpressMvvm" Version="20.2.3" />
-  </ItemGroup>
-
 </Project>
