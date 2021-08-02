@@ -1,0 +1,24 @@
+﻿<Window x:Class="PrismDI.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:PrismDI"
+        Title="MainWindow" Height="400" Width="600"
+        prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Main View">
+            <ListBox BorderThickness="0"
+                     ItemsSource="{Binding Items}"
+                     SelectedItem="{Binding SelectedItem}"
+                     DisplayMemberPath="DisplayText"/>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Detail View">
+            <local:DetailView/>
+        </GroupBox>
+    </Grid>
+</Window>
