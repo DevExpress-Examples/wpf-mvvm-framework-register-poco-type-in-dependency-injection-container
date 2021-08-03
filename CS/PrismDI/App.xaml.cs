@@ -15,7 +15,13 @@ namespace PrismDI {
 
         protected override void ConfigureViewModelLocator() {
             base.ConfigureViewModelLocator();
-            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType => ViewModelSource.GetPOCOType(Type.GetType($"{viewType.FullName}ViewModel<Person>")));
+            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType => {
+                if(viewType == typeof(MainView))
+                    return ViewModelSource.GetPOCOType(typeof(CollectionViewModel<Person>));
+                if(viewType == typeof(DetailView))
+                    return ViewModelSource.GetPOCOType(typeof(DetailViewModel<Person>));
+                throw new NotSupportedException();
+            });
         }
 
         protected override Window CreateShell() => Container.Resolve<MainView>();

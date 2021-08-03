@@ -75,6 +75,7 @@
     <Compile Include="DryIoc\Expression.cs" />
     <Compile Include="DryIoc\FastExpressionCompiler.cs" />
     <Compile Include="DryIoc\ImTools.cs" />
+    <Compile Include="ServiceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainView.xaml.cs">
