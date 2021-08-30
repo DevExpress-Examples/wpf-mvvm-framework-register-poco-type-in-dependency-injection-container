@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="NinjectDI.DetailView"
+<UserControl x:Class="NinjectDI.DetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              DataContext="{Binding Path=DetailViewModel, Source={StaticResource ServiceLocator}}">
