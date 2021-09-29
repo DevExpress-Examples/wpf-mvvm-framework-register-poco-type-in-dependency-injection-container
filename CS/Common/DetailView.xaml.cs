@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace DryIocDI {
+namespace Common {
     public partial class DetailView : UserControl {
         public DetailView() => InitializeComponent();
     }

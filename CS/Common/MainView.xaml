@@ -1,8 +1,7 @@
-<Window x:Class="DryIocDI.MainView"
+<Window x:Class="Common.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:DryIocDI"
-        xmlns:common="clr-namespace:Common;assembly=Common"
+        xmlns:common="clr-namespace:Common"
         Title="MainWindow" Height="400" Width="600"
         DataContext="{common:DISource Type=common:CollectionViewModel}">
 
@@ -18,7 +17,7 @@
                      DisplayMemberPath="DisplayText"/>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Detail View">
-            <local:DetailView/>
+            <common:DetailView/>
         </GroupBox>
     </Grid>
 </Window>

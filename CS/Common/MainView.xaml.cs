@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace UnityDI {
+namespace Common {
     public partial class MainView : Window {
         public MainView() => InitializeComponent();
     }

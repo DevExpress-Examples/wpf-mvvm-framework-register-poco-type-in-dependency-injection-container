@@ -5,22 +5,40 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacDI", "AutofacDI\AutofacDI.csproj", "{4E7FD351-D662-4F12-95C7-ED9758C6A3D1}"
 	ProjectSection(ProjectDependencies) = postProject
-		{F8068A8F-DA0C-4529-8D13-073AAFD59664} = {F8068A8F-DA0C-4529-8D13-073AAFD59664}
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismDI", "PrismDI\PrismDI.csproj", "{27A0F087-E42F-4977-BB04-4E54F3596DBD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrosoftDI", "MicrosoftDI\MicrosoftDI.csproj", "{02400CC4-EAF5-4FAE-B2F9-D5237514405E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectDI", "NinjectDI\NinjectDI.csproj", "{86FCC442-1580-4740-A041-0630975F3616}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleInjectorDI", "SimpleInjectorDI\SimpleInjectorDI.csproj", "{087A0645-3A10-4302-A99E-360CCC97FE3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryIocDI", "DryIocDI\DryIocDI.csproj", "{A124B2E7-D859-4A49-B7A3-D9BFCC24EBFB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityDI", "UnityDI\UnityDI.csproj", "{B4286077-F2CC-4F73-8D4E-74C35C0AA34B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657B7588-B4CB-4397-91DE-51C593AA2416} = {657B7588-B4CB-4397-91DE-51C593AA2416}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F8068A8F-DA0C-4529-8D13-073AAFD59664}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{657B7588-B4CB-4397-91DE-51C593AA2416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +74,10 @@ Global
 		{B4286077-F2CC-4F73-8D4E-74C35C0AA34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4286077-F2CC-4F73-8D4E-74C35C0AA34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4286077-F2CC-4F73-8D4E-74C35C0AA34B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8068A8F-DA0C-4529-8D13-073AAFD59664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8068A8F-DA0C-4529-8D13-073AAFD59664}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8068A8F-DA0C-4529-8D13-073AAFD59664}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8068A8F-DA0C-4529-8D13-073AAFD59664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657B7588-B4CB-4397-91DE-51C593AA2416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657B7588-B4CB-4397-91DE-51C593AA2416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657B7588-B4CB-4397-91DE-51C593AA2416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657B7588-B4CB-4397-91DE-51C593AA2416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
