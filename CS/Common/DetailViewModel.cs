@@ -1,12 +1,16 @@
 ﻿using System;
 
 namespace Common {
-    public class DetailViewModel<T> : IDetailViewModel where T : class {
-        readonly IDataStorage<T> storage;
+    public interface IDetailViewModel {
+        void SetCurrentItem(int id, Action<int> onItemUpdated);
+    }
+
+    public class DetailViewModel : IDetailViewModel {
+        readonly IDataStorage<Person> storage;
         Action<int> onItemUpdated;
 
-        public virtual T Item { get; set; }
-        public DetailViewModel(IDataStorage<T> storage) => this.storage = storage;
+        public virtual Person Item { get; set; }
+        public DetailViewModel(IDataStorage<Person> storage) => this.storage = storage;
 
         void IDetailViewModel.SetCurrentItem(int id, Action<int> onItemUpdated) {
             Item = storage.Find(id);
@@ -14,7 +18,7 @@ namespace Common {
         }
         public void Update() {
             storage.Update(Item);
-            onItemUpdated(storage.GetId(Item));
+            onItemUpdated(Item.Id);
         }
         public bool CanUpdate() => Item != null;
     }

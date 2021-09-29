@@ -2,6 +2,12 @@
 using System.Linq;
 
 namespace Common {
+    public interface IDataStorage<T> where T : class {
+        T Find(int id);
+        IList<T> Read();
+        void Update(T item);
+    }
+
     public class PersonStorage : IDataStorage<Person> {
         readonly IList<Person> items = new List<Person> {
             new Person() { Id = 0, FirstName = "Bruce", LastName = "Cambell" },
@@ -16,7 +22,6 @@ namespace Common {
             new Person() { Id = 9, FirstName = "Anthony", LastName = "Rounds" },
         };
 
-        int IDataStorage<Person>.GetId(Person item) => item.Id;
         Person IDataStorage<Person>.Find(int id) => Clone(FindCore(id));
         IList<Person> IDataStorage<Person>.Read() => items.Select(x => Clone(x)).ToList();
         void IDataStorage<Person>.Update(Person item) {

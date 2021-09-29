@@ -10,16 +10,16 @@ namespace PrismDI {
     public partial class App : PrismApplication {
         protected override void RegisterTypes(IContainerRegistry containerRegistry) =>
             containerRegistry.RegisterSingleton(typeof(IDataStorage<Person>), typeof(PersonStorage))
-                             .RegisterManySingleton(ViewModelSource.GetPOCOType(typeof(DetailViewModel<Person>)), typeof(DetailViewModel<Person>), typeof(IDetailViewModel))
-                             .Register(typeof(CollectionViewModel<Person>), ViewModelSource.GetPOCOType(typeof(CollectionViewModel<Person>)));
+                             .RegisterManySingleton(ViewModelSource.GetPOCOType(typeof(DetailViewModel)), typeof(DetailViewModel), typeof(IDetailViewModel))
+                             .Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
 
         protected override void ConfigureViewModelLocator() {
             base.ConfigureViewModelLocator();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType => {
                 if(viewType == typeof(MainView))
-                    return ViewModelSource.GetPOCOType(typeof(CollectionViewModel<Person>));
+                    return ViewModelSource.GetPOCOType(typeof(CollectionViewModel));
                 if(viewType == typeof(DetailView))
-                    return ViewModelSource.GetPOCOType(typeof(DetailViewModel<Person>));
+                    return ViewModelSource.GetPOCOType(typeof(DetailViewModel));
                 throw new NotSupportedException();
             });
         }

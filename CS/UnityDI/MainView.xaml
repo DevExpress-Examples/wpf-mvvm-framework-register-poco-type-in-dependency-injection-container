@@ -2,8 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:UnityDI"
+        xmlns:common="clr-namespace:Common;assembly=Common"
         Title="MainWindow" Height="400" Width="600"
-        DataContext="{Binding Path=MainViewModel, Source={StaticResource ServiceLocator}}">
+        DataContext="{common:DISource Type=common:CollectionViewModel}">
 
     <Grid Margin="5">
         <Grid.RowDefinitions>
