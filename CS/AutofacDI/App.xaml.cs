@@ -5,14 +5,14 @@ using System;
 using System.Windows;
 
 namespace AutofacDI {
-    public partial class App : Application, IInjectionResolver {
+    public partial class App : Application {
         IContainer Container { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
             Container = BuildUpContainer();
-            DISource.Resolver = this;
+            DISource.Resolver = Resolve;
         }
-        object IInjectionResolver.Resolve(Type type, object key, string name) {
+        object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(key != null)

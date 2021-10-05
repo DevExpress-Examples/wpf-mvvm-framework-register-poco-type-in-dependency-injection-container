@@ -6,14 +6,14 @@ using System.Windows;
 using System;
 
 namespace NinjectDI {
-    public partial class App : Application, IInjectionResolver {
+    public partial class App : Application {
         IKernel Kernel { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
             Kernel = new StandardKernel(new MyModule());
-            DISource.Resolver = this;
+            DISource.Resolver = Resolve;
         }
-        object IInjectionResolver.Resolve(Type type, object key, string name) {
+        object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(name != null)

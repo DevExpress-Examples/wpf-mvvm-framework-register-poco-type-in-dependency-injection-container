@@ -5,7 +5,7 @@ using System;
 using System.Windows;
 
 namespace DryIocDI {
-    public partial class App : Application, IInjectionResolver {
+    public partial class App : Application {
         IContainer Container { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
@@ -13,9 +13,9 @@ namespace DryIocDI {
             Container.Register(typeof(IDataStorage<Person>), typeof(PersonStorage), Reuse.Singleton);
             Container.RegisterMany(new Type[] { typeof(IDetailViewModel), typeof(DetailViewModel) }, ViewModelSource.GetPOCOType(typeof(DetailViewModel)), Reuse.Singleton);
             Container.Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
-            DISource.Resolver = this;
+            DISource.Resolver = Resolve;
         }
-        object IInjectionResolver.Resolve(Type type, object key, string name) {
+        object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(key != null)

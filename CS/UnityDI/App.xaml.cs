@@ -5,7 +5,7 @@ using System.Windows;
 using Unity;
 
 namespace UnityDI {
-    public partial class App : Application, IInjectionResolver {
+    public partial class App : Application {
         IUnityContainer Container { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
@@ -14,9 +14,9 @@ namespace UnityDI {
                 .RegisterSingleton(typeof(DetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)))
                 .RegisterSingleton(typeof(IDetailViewModel), typeof(DetailViewModel))
                 .RegisterType(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
-            DISource.Resolver = this;
+            DISource.Resolver = Resolve;
         }
-        object IInjectionResolver.Resolve(Type type, object key, string name) {
+        object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(name != null)

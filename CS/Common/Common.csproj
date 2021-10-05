@@ -38,7 +38,6 @@
     </Compile>
     <Compile Include="DetailViewModel.cs" />
     <Compile Include="DISource.cs" />
-    <Compile Include="IInjectionResolver.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
