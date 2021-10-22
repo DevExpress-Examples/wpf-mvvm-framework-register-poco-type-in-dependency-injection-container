@@ -6,11 +6,13 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Doctor.cs](./CS/SimpleSchedulingExample/Doctor.cs) (VB: [Doctor.vb](./VB/SimpleSchedulingExample/Doctor.vb))
-* [MainViewModel.cs](./CS/SimpleSchedulingExample/MainViewModel.cs) (VB: [MainViewModel.vb](./VB/SimpleSchedulingExample/MainViewModel.vb))
-* [MainWindow.xaml](./CS/SimpleSchedulingExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/SimpleSchedulingExample/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/SimpleSchedulingExample/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/SimpleSchedulingExample/MainWindow.xaml.vb))
-* [MedicalAppointment.cs](./CS/SimpleSchedulingExample/MedicalAppointment.cs) (VB: [MedicalAppointment.vb](./VB/SimpleSchedulingExample/MedicalAppointment.vb))
+* [AutofacDI](./CS/AutofacDI/App.xaml.cs)
+* [DryIocDI](./CS/DryIocDI/App.xaml.cs)
+* [MicrosoftDI](./CS/MicrosoftDI/App.xaml.cs)
+* [NinjectDI](./CS/NinjectDI/App.xaml.cs)
+* [PrismDI](./CS/PrismDI/App.xaml.cs)
+* [SimpleInjectorDI](./CS/SimpleInjectorDI/App.xaml.cs)
+* [UnityDI](./CS/UnityDI/App.xaml.cs)
 <!-- default file list end -->
 
 # How to register a POCO View Model in a Dependency Injection container
