@@ -21,6 +21,10 @@ To use a POCO View Model in a DI container, use the ViewModelSource.GetPOCOType 
 
 `container = unityContainer.RegisterType(typeof(IMainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));`
 
+Use the DISource.Resolver property to create a MarkupExtension that resolves the correct ViewModel type. Specify the DataContext in XAML in the following manner:
+
+`DataContext="{common:DISource Type=common:CollectionViewModel}"`
+
 This example illustrates how to apply this technique to various DI containers.
 
 <br/>
