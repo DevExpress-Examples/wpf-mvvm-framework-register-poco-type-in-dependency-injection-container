@@ -17,6 +17,29 @@
 
 # How to register a POCO View Model in a Dependency Injection container
 
+To bind a view to a view model, create a MarkupExtension that resolves the correct ViewModel type, as shown in the [DISource](./CS/Common/DISource.cs) class. Register the resolver at the application startup:
+
+```
+protected override void OnStartup(StartupEventArgs e) {
+    base.OnStartup(e);
+    Container = BuildUpContainer();
+    DISource.Resolver = Resolve;
+}
+object Resolve(Type type, object key, string name) {
+    if(type == null)
+        return null;
+    if(key != null)
+        return Container.ResolveKeyed(key, type);
+    if(name != null)
+        return Container.ResolveNamed(name, type);
+    return Container.Resolve(type);
+}
+```
+
+Specify the DataContext in XAML in the following manner:
+
+`DataContext="{common:DISource Type=common:CollectionViewModel}"`
+
 To use a POCO View Model in a DI container, use the ViewModelSource.GetPOCOType method to register the POCO type generated in runtime:
 
 `container = unityContainer.RegisterType(typeof(IMainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));`
