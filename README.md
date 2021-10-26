@@ -39,7 +39,7 @@ object Resolve(Type type, object key, string name) {
 Specify the DataContext in XAML in the following manner:
 
 ```
-DataContext="{common:DISource Type=common:CollectionViewModel}"
+DataContext="{common:DISource Type=common:MainViewModel}"
 ```
 
 To use a POCO View Model in a DI container, use the `ViewModelSource.GetPOCOType` method to register the POCO type generated in runtime:
