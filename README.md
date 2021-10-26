@@ -45,7 +45,7 @@ DataContext="{common:DISource Type=common:MainViewModel}"
 To use a POCO View Model in a DI container, use the `ViewModelSource.GetPOCOType` method to register the POCO type generated in runtime:
 
 ``` c# 
-Container.RegisterType(typeof(IMainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));
+Container.RegisterType(typeof(MainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));
 ```
 
 This example illustrates how to apply this technique to various DI containers.
