@@ -19,7 +19,7 @@
 
 To bind a view to a view model, create a MarkupExtension that resolves the correct ViewModel type, as shown in the [DISource](./CS/Common/DISource.cs) class. Register the resolver at the application startup:
 
-```
+``` c#
 protected override void OnStartup(StartupEventArgs e) {
     base.OnStartup(e);
     Container = BuildUpContainer();
@@ -38,11 +38,15 @@ object Resolve(Type type, object key, string name) {
 
 Specify the DataContext in XAML in the following manner:
 
-`DataContext="{common:DISource Type=common:CollectionViewModel}"`
+```
+DataContext="{common:DISource Type=common:CollectionViewModel}"
+```
 
 To use a POCO View Model in a DI container, use the ViewModelSource.GetPOCOType method to register the POCO type generated in runtime:
 
-`container = unityContainer.RegisterType(typeof(IMainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));`
+``` c# 
+Container.RegisterType(typeof(IMainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));
+```
 
 This example illustrates how to apply this technique to various DI containers.
 
