@@ -3,21 +3,12 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1038807)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [AutofacDI](./CS/AutofacDI/App.xaml.cs)
-* [DryIocDI](./CS/DryIocDI/App.xaml.cs)
-* [MicrosoftDI](./CS/MicrosoftDI/App.xaml.cs)
-* [NinjectDI](./CS/NinjectDI/App.xaml.cs)
-* [PrismDI](./CS/PrismDI/App.xaml.cs)
-* [SimpleInjectorDI](./CS/SimpleInjectorDI/App.xaml.cs)
-* [UnityDI](./CS/UnityDI/App.xaml.cs)
-<!-- default file list end -->
+# Register a POCO View Model in a Dependency Injection Container
 
-# How to register a POCO View Model in a Dependency Injection container
+This example illustrates how to register a POCO View Model in a various Dependency Injection containers.
 
-To bind a view to a view model, create a MarkupExtension that resolves the correct ViewModel type, as shown in the [DISource](./CS/Common/DISource.cs) class. Register the resolver at the application startup:
+To bind a View to a ViewModel, create a MarkupExtension that resolves the correct ViewModel type, as shown in the [DISource](./CS/Common/DISource.cs) class. Register the resolver at the application startup:
 
 ``` c#
 protected override void OnStartup(StartupEventArgs e) {
@@ -48,6 +39,18 @@ To use a POCO View Model in a DI container, use the `ViewModelSource.GetPOCOType
 Container.RegisterType(typeof(MainViewModel), ViewModelSource.GetPOCOType(typeof(MainViewModel)));
 ```
 
-This example illustrates how to apply this technique to various DI containers.
 
-<br/>
+<!-- default file list -->
+## Files to Look At
+
+* [AutofacDI](./CS/AutofacDI/App.xaml.cs)
+* [DryIocDI](./CS/DryIocDI/App.xaml.cs)
+* [MicrosoftDI](./CS/MicrosoftDI/App.xaml.cs)
+* [NinjectDI](./CS/NinjectDI/App.xaml.cs)
+* [PrismDI](./CS/PrismDI/App.xaml.cs)
+* [SimpleInjectorDI](./CS/SimpleInjectorDI/App.xaml.cs)
+* [UnityDI](./CS/UnityDI/App.xaml.cs)
+<!-- default file list end -->
+
+## Documentation
+* [Runtime-generated POCO View Models](https://docs.devexpress.com/WPF/17352/mvvm-framework/viewmodels/runtime-generated-poco-viewmodels)
