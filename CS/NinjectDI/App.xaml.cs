@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using DevExpress.Mvvm.POCO;
 using Ninject.Modules;
 using Ninject;
@@ -7,18 +7,18 @@ using System;
 
 namespace NinjectDI {
     public partial class App : Application {
-        IKernel Kernel { get; set; }
+        IKernel kernel;
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
-            Kernel = new StandardKernel(new MyModule());
+            kernel = new StandardKernel(new MyModule());
             DISource.Resolver = Resolve;
         }
         object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(name != null)
-                return Kernel.Get(type, name);
-            return Kernel.Get(type);
+                return kernel.Get(type, name);
+            return kernel.Get(type);
         }
     }
 
