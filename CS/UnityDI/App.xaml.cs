@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using DevExpress.Mvvm.POCO;
 using System;
 using System.Windows;
@@ -6,10 +6,10 @@ using Unity;
 
 namespace UnityDI {
     public partial class App : Application {
-        IUnityContainer Container { get; set; }
+        IUnityContainer container;
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
-            Container = new UnityContainer()
+            container = new UnityContainer()
                 .RegisterSingleton(typeof(IDataStorage<Person>), typeof(PersonStorage))
                 .RegisterSingleton(typeof(DetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)))
                 .RegisterSingleton(typeof(IDetailViewModel), typeof(DetailViewModel))
@@ -20,8 +20,8 @@ namespace UnityDI {
             if(type == null)
                 return null;
             if(name != null)
-                return Container.Resolve(type, name);
-            return Container.Resolve(type);
+                return container.Resolve(type, name);
+            return container.Resolve(type);
         }
     }
 }

@@ -8,10 +8,11 @@ using System.Windows;
 
 namespace PrismDI {
     public partial class App : PrismApplication {
-        protected override void RegisterTypes(IContainerRegistry containerRegistry) =>
+        protected override void RegisterTypes(IContainerRegistry containerRegistry) {
             containerRegistry.RegisterSingleton(typeof(IDataStorage<Person>), typeof(PersonStorage))
                              .RegisterManySingleton(ViewModelSource.GetPOCOType(typeof(DetailViewModel)), typeof(DetailViewModel), typeof(IDetailViewModel))
                              .Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
+        }
 
         protected override void ConfigureViewModelLocator() {
             base.ConfigureViewModelLocator();
@@ -24,6 +25,8 @@ namespace PrismDI {
             });
         }
 
-        protected override Window CreateShell() => Container.Resolve<MainView>();
+        protected override Window CreateShell() {
+            return Container.Resolve<MainView>();
+        }
     }
 }
