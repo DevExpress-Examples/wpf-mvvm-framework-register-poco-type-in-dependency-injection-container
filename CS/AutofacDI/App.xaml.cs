@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using Common;
 using DevExpress.Mvvm.POCO;
 using System;
@@ -6,20 +6,20 @@ using System.Windows;
 
 namespace AutofacDI {
     public partial class App : Application {
-        IContainer Container { get; set; }
+        IContainer container;
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
-            Container = BuildUpContainer();
+            container = BuildUpContainer();
             DISource.Resolver = Resolve;
         }
         object Resolve(Type type, object key, string name) {
             if(type == null)
                 return null;
             if(key != null)
-                return Container.ResolveKeyed(key, type);
+                return container.ResolveKeyed(key, type);
             if(name != null)
-                return Container.ResolveNamed(name, type);
-            return Container.Resolve(type);
+                return container.ResolveNamed(name, type);
+            return container.Resolve(type);
         }
 
         static IContainer BuildUpContainer() {

@@ -9,6 +9,8 @@ namespace Common {
         public object Key { get; set; }
         public string Name { get; set; }
 
-        public override object ProvideValue(IServiceProvider serviceProvider) => Resolver?.Invoke(Type, Key, Name);
+        public override object ProvideValue(IServiceProvider serviceProvider) {
+            return Resolver?.Invoke(Type, Key, Name);
+        }
     }
 }
