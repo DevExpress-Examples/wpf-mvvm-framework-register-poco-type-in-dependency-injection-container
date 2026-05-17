@@ -1,7 +1,7 @@
-﻿using Common;
+using Common;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.POCO;
 using Prism.Ioc;
-using Prism.Mvvm;
 using Prism.Unity;
 using System;
 using System.Windows;
@@ -14,19 +14,20 @@ namespace PrismDI {
                              .Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
         }
 
-        protected override void ConfigureViewModelLocator() {
-            base.ConfigureViewModelLocator();
-            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType => {
-                if(viewType == typeof(MainView))
-                    return ViewModelSource.GetPOCOType(typeof(CollectionViewModel));
-                if(viewType == typeof(DetailView))
-                    return ViewModelSource.GetPOCOType(typeof(DetailViewModel));
-                throw new NotSupportedException();
-            });
-        }
-
         protected override Window CreateShell() {
+            IocServiceProvider.Default.ConfigureServices(new PrismServiceProvider(Container));
             return Container.Resolve<MainView>();
+        }
+    }
+
+    class PrismServiceProvider : IServiceProvider {
+        readonly IContainerProvider container;
+        public PrismServiceProvider(IContainerProvider container) {
+            this.container = container;
+        }
+        public object GetService(Type serviceType) {
+            try { return container.Resolve(serviceType); }
+            catch { return null; }
         }
     }
 }
