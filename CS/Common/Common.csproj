@@ -44,6 +44,7 @@
     <Compile Include="PersonStorage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v26.1" />
     <Reference Include="DevExpress.Mvvm.v26.1" />
     <Reference Include="DevExpress.Xpf.Core.v26.1" />
     <Reference Include="System" />
