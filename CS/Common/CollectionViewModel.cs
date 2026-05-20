@@ -21,9 +21,9 @@ namespace Common {
             detail.SetCurrentItem(
                 SelectedItem.Id,
                 id => {
-                    var item = storage.Find(id);
-                    var localItem = Items.First(x => x.Id == id);
-                    var index = Items.IndexOf(localItem);
+                    Person item = storage.Find(id);
+                    Person localItem = Items.First(x => x.Id == id);
+                    int index = Items.IndexOf(localItem);
                     Items[index] = item;
                     SelectedItem = item;
                 }

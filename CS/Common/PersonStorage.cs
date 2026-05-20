@@ -25,7 +25,7 @@ namespace Common {
         Person IDataStorage<Person>.Find(int id) => Clone(FindCore(id));
         IList<Person> IDataStorage<Person>.Read() => items.Select(x => Clone(x)).ToList();
         void IDataStorage<Person>.Update(Person item) {
-            var storageItem = FindCore(item.Id);
+            Person storageItem = FindCore(item.Id);
             storageItem.FirstName = item.FirstName;
             storageItem.LastName = item.LastName;
         }

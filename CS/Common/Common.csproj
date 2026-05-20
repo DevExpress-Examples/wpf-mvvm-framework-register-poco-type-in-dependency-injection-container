@@ -37,7 +37,6 @@
       <DependentUpon>DetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DetailViewModel.cs" />
-    <Compile Include="DISource.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -45,6 +44,8 @@
     <Compile Include="PersonStorage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Mvvm.v26.1" />
+    <Reference Include="DevExpress.Xpf.Core.v26.1" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
