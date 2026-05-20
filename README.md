@@ -9,7 +9,7 @@
 
 This example illustrates how to register a POCO View Model in a various Dependency Injection containers.
 
-To bind a View to a ViewModel, create a MarkupExtension that resolves the correct ViewModel type, as shown in the [DISource](./CS/Common/DISource.cs) class. Register the resolver at the application startup:
+To bind a View to a ViewModel, create a MarkupExtension that resolves the correct ViewModel type, as shown in the `DISource` class. Register the resolver at the application startup:
 
 ``` c#
 protected override void OnStartup(StartupEventArgs e) {
