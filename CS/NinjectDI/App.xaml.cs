@@ -1,24 +1,16 @@
-﻿using Common;
+using Common;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.POCO;
-using Ninject.Modules;
 using Ninject;
+using Ninject.Modules;
 using System.Windows;
-using System;
 
 namespace NinjectDI {
     public partial class App : Application {
-        IKernel Kernel { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
+            IKernel kernel = new StandardKernel(new MyModule());
+            IocServiceProvider.Default.ConfigureServices(kernel);
             base.OnStartup(e);
-            Kernel = new StandardKernel(new MyModule());
-            DISource.Resolver = Resolve;
-        }
-        object Resolve(Type type, object key, string name) {
-            if(type == null)
-                return null;
-            if(name != null)
-                return Kernel.Get(type, name);
-            return Kernel.Get(type);
         }
     }
 

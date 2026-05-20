@@ -1,8 +1,9 @@
 <UserControl x:Class="Common.DetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:common="clr-namespace:Common"
-             DataContext="{common:DISource Type=common:DetailViewModel}">
+             DataContext="{dxmvvm:Ioc Type={x:Type common:DetailViewModel}}">
 
     <UserControl.Resources>
         <Style x:Key="BaseStyle" TargetType="Control">

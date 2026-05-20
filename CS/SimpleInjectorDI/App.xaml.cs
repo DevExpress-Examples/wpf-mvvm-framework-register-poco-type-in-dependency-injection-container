@@ -1,21 +1,19 @@
-﻿using Common;
+using Common;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.POCO;
 using SimpleInjector;
-using System;
 using System.Windows;
 
 namespace SimpleInjectorDI {
     public partial class App : Application {
-        Container Container { get; set; }
         protected override void OnStartup(StartupEventArgs e) {
+            var container = new Container();
+            container.RegisterSingleton(typeof(IDataStorage<Person>), typeof(PersonStorage));
+            container.RegisterSingleton(typeof(DetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)));
+            container.RegisterSingleton(typeof(IDetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)));
+            container.Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
+            IocServiceProvider.Default.ConfigureServices(container);
             base.OnStartup(e);
-            Container = new Container();
-            Container.RegisterSingleton(typeof(IDataStorage<Person>), typeof(PersonStorage));
-            Container.RegisterSingleton(typeof(DetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)));
-            Container.RegisterSingleton(typeof(IDetailViewModel), ViewModelSource.GetPOCOType(typeof(DetailViewModel)));
-            Container.Register(typeof(CollectionViewModel), ViewModelSource.GetPOCOType(typeof(CollectionViewModel)));
-            DISource.Resolver = Resolve;
         }
-        object Resolve(Type type, object key, string name) => type == null ? null : Container.GetInstance(type);
     }
 }
